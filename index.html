@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sean Óg McCartan - Software Engineering Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --accent-color: #e74c3c;
+            --light-accent: #ecf0f1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-title {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            margin: 1rem 0;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        .tagline {
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        .about-me {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        section {
+            padding: 3rem 0;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--light-accent);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 0.5rem auto;
+        }
+
+        .work-experience, .project {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .work-experience:hover, .project:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .work-location {
+            color: var(--secondary-color);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-period {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .work-description {
+            margin-bottom: 1rem;
+        }
+
+        .work-duties {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        .work-duties li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .work-duties li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+        }
+
+        .education-item {
+            margin-bottom: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-location {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+
+        .education-period {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .grade-section {
+            margin-top: 2rem;
+        }
+
+        .grade-category {
+            font-weight: 500;
+            color: var(--primary-color);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .grades-list {
+            list-style: none;
+        }
+
+        .grade-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .grade-item:last-child {
+            border-bottom: none;
+        }
+
+        .subject {
+            flex-grow: 1;
+        }
+
+        .grade {
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-left: 1rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .skills-category {
+            width: 100%;
+            margin-bottom: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+        }
+
+        .skills-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-tag:hover {
+            background-color: var(--primary-color);
+        }
+
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-period {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+        }
+
+        .project-details {
+            list-style-position: inside;
+            margin-left: 1rem;
+        }
+
+        .project-details li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .project-details li::before {
+            content: '•';
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .progress-container {
+            width: 100%;
+            background-color: #e1e1e1;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            border-radius: 10px;
+            background-color: var(--secondary-color);
+            width: 0;
+            transition: width 1s ease-in-out;
+        }
+
+        .grade-percentage {
+            display: inline-block;
+            width: 50px;
+            text-align: right;
+        }
+
+        .theme-selector {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .theme-selector:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-icon {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .theme-options {
+            position: absolute;
+            bottom: 60px;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            display: none;
+        }
+
+        .theme-options.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .theme-option {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .theme-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .theme-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .theme-name {
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .theme-selector, .back-to-top {
+                display: none;
+            }
+
+            header {
+                position: static;
+            }
+
+            .tab-content {
+                display: block !important;
+            }
+
+            .work-experience, .education-item, .skills-category, .project {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .projects-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-category {
+                width: 100%;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .nav-item {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1 class="profile-title">Sean Óg McCartan</h1>
+            <div class="contact-info">
+                <a href="tel:+447938495942"><i class="fas fa-phone"></i> 079 3849 5942</a>
+                <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
+                <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <span><i class="fas fa-map-marker-alt"></i> Belfast, Co. Antrim / Omagh, Co. Tyrone</span>
+            </div>
+            <h2 class="tagline">Software Engineering Student</h2>
+            <div class="about-me">
+                <p>Disciplined, technical and energetic Software Engineering student with experience in an intense healthcare working environment for over 2.5 years, with proven ability to be reliable and work hard. Over 5 years of experience studying computer science and related fields, consistently maintaining a strong academic record. Ability to lead/work in effectively and coordinated team environments. Expertise in user-centric design, relationship-building, and effective communication.</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container nav-container">
+            <a href="#experience" class="nav-item" data-target="experience">Experience</a>
+            <a href="#education" class="nav-item" data-target="education">Education</a>
+            <a href="#skills" class="nav-item" data-target="skills">Skills</a>
+            <a href="#projects" class="nav-item" data-target="projects">Projects</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="experience" class="tab-content active">
+            <div class="container">
+                <h2 class="section-title">Work Experience</h2>
+                <div class="work-experience">
+                    <h3 class="work-title">Domestic Assistant</h3>
+                    <p class="work-location">Omagh Hospital and Primary Care Complex — Omagh, Co. Tyrone</p>
+                    <p class="work-period">August 2022 - Present</p>
+                    <p class="work-description">Maintained a 95% Domestic Audit Score, amongst an intense healthcare environment.</p>
+                    <ul class="work-duties">
+                        <li>Ensure the Omagh Hospital is to the required degree of cleanly and sanitary standards.</li>
+                        <li>Perform COVID-19 and other high risk infection control tasks on a weekly basis.</li>
+                        <li>Be highly responsible and coordinated when handling and using dangerous chemicals.</li>
+                        <li>Have a friendly and calm demeanour when working around other staff members/the public.</li>
+                        <li>Practice patient confidentiality and always prioritize their care and wellbeing.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="tab-content">
+            <div class="container">
+                <h2 class="section-title">Education</h2>
+                <div class="education-item">
+                    <h3 class="education-title">Bachelor's Degree of Engineering — Software Engineering</h3>
+                    <p class="education-location">Queen's University — Belfast, Co. Antrim</p>
+                    <p class="education-period">September 2023 - Present</p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="education-title">A-Level's in Physics, Technology & Design and Software Systems Development</h3>
+                    <p class="education-location">Christian Brother's Grammar School — Omagh, Co. Tyrone</p>
+                    <p class="education-period">September 2016 - June 2023</p>
+                </div>
+
+                <div class="grade-section">
+                    <h2 class="section-title">Academic Performance</h2>
+                    
+                    <h3 class="grade-category">Second Year Grades — Queen's University (as of March 2025)</h3>
+                    <ul class="grades-list">
+                        <li class="grade-item">
+                            <span class="subject">Data Structures and Algorithms</span>
+                            <span class="grade-percentage">78%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="78"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Professional and Transferrable Skills</span>
+                            <span class="grade-percentage">73%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="73"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Software Engineering and Systems Development</span>
+                            <span class="grade-percentage">TBD</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="0"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Systems Security and Cryptography</span>
+                            <span class="grade-percentage">72%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="72"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Service Orientated Programming</span>
+                            <span class="grade-percentage">TBD</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="0"></div>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <h3 class="grade-category">First Year Grades — Queen's University (May 2024)</h3>
+                    <ul class="grades-list">
+                        <li class="grade-item">
+                            <span class="subject">Databases</span>
+                            <span class="grade-percentage">57%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="57"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Fundamentals of Maths for Computing</span>
+                            <span class="grade-percentage">63%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="63"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Programming (Java)</span>
+                            <span class="grade-percentage">58%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="58"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Introduction to Cyber Security</span>
+                            <span class="grade-percentage">69%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="69"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Introduction to Computer Architecture</span>
+                            <span class="grade-percentage">52%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="52"></div>
+                                </div>
+                            </span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Software Design Principles</span>
+                            <span class="grade-percentage">46%</span>
+                            <span class="grade">
+                                <div class="progress-container">
+                                    <div class="progress-bar" data-percentage="46"></div>
+                                </div>
+                            </span>
+                        </li>
+                    </ul>
+
+                    <h3 class="grade-category">A Levels — Christian Brothers Grammar School (August 2023)</h3>
+                    <ul class="grades-list">
+                        <li class="grade-item">
+                            <span class="subject">Physics</span>
+                            <span class="grade">B</span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Software Systems Development</span>
+                            <span class="grade">A</span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Technology and Design</span>
+                            <span class="grade">A</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="grade-category">AS Levels — Christian Brothers Grammar School (August 2022)</h3>
+                    <ul class="grades-list">
+                        <li class="grade-item">
+                            <span class="subject">Physics</span>
+                            <span class="grade">C</span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Software Systems Development</span>
+                            <span class="grade">C</span>
+                        </li>
+                        <li class="grade-item">
+                            <span class="subject">Technology and Design</span>
+                            <span class="grade">B</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="tab-content">
+            <div class="container">
+                <h2 class="section-title">Professional Skills</h2>
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3>Programming Languages</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">CSS</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Software Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Adobe Photoshop</span>
+                            <span class="skill-tag">Circuit Wizard</span>
+                            <span class="skill-tag">Visual Studio</span>
+                            <span class="skill-tag">PyCharm</span>
+                            <span class="skill-tag">IntelliJ</span>
+                        </div>
+                    </div>
+                    <div class="skills-category">
+                        <h3>Soft Skills</h3>
+                        <div class="skills-list">
+                            <span class="skill-tag">Problem-solving</span>
+                            <span class="skill-tag">Organization</span>
+                            <span class="skill-tag">Multitasking</span>
+                            <span class="skill-tag">Team building</span>
+                            <span class="skill-tag">Interpersonal skills</span>
+                            <span class="skill-tag">User-centric design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="tab-content">
+            <div class="container">
+                <h2 class="section-title">Project Work</h2>
+                <div class="projects-container">
+                    <div class="project">
+                        <h3 class="project-title">Part-Time Job Analytics Tool</h3>
+                        <p class="project-period">October 2024 - Present</p>
+                        <p class="project-description">Personal Project (In Progress)</p>
+                    </div>
+                    <div class="project">
+                        <h3 class="project-title">Office Booking System</h3>
+                        <p class="project-period">September 2022 - March 2023</p>
+                        <p class="project-description">Software Systems Development - A-Level Project</p>
+                        <ul class="project-details">
+                            <li>Developed a full-stack office booking system using C#, SQL, and Crystal Reports.</li>
+                            <li>Produced a 30,000 word documentation file, including industry standard tests.</li>
+                            <li>Became familiar with Waterfall, RAD, DSDM, SCRUM and XP methodologies.</li>
+                            <li>Became familiar with program, system, white box, black box, integration and user acceptance (alpha and beta) test models.</li>
+                        </ul>
+                    </div>
+                    <div class="project">
+                        <h3 class="project-title">Functional Coin Sorter</h3>
+                        <p class="project-period">September 2022 - March 2023</p>
+                        <p class="project-description">Technology & Design - A-Level Project</p>
+                        <ul class="project-details">
+                            <li>Designed and manufactured a functional coin sorter using CAD, 3D printing, and CNC technology.</li>
+                            <li>Produced 20 A3 Pages of project sketches and design documentation.</li>
+                            <li>Programmed circuit functionality and interactions via Circuit Wizard.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
+                <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="tel:+447938495942"><i class="fas fa-phone"></i> 079 3849 5942</a>
+            </div>
+            <p>&copy; 2025 Sean Óg McCartan</p>
+        </div>
+    </footer>
+
+    <div class="theme-selector">
+        <div class="theme-icon">
+            <i class="fas fa-palette"></i>
+        </div>
+        <div class="theme-options">
+            <div class="theme-option" data-theme="default">
+                <div class="theme-color" style="background-color: #3498db;"></div>
+                <div class="theme-name">Default</div>
+            </div>
+            <div class="theme-option" data-theme="green">
+                <div class="theme-color" style="background-color: #2ecc71;"></div>
+                <div class="theme-name">Green</div>
+            </div>
+            <div class="theme-option" data-theme="purple">
+                <div class="theme-color" style="background-color: #9b59b6;"></div>
+                <div class="theme-name">Purple</div>
+            </div>
+            <div class="theme-option" data-theme="orange">
+                <div class="theme-color" style="background-color: #e67e22;"></div>
+                <div class="theme-name">Orange</div>
+            </div>
+            <div class="theme-option" data-theme="dark">
+                <div class="theme-color" style="background-color: #34495e;"></div>
+                <div class="theme-name">Dark</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() 
+        {
+            // Tab navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all nav items and tabs
+                    navItems.forEach(navItem => navItem.classList.remove('active'));
+                    tabContents.forEach(tab => tab.classList.remove('active'));
+                    
+                    // Add active class to clicked nav item
+                    this.classList.add('active');
+                    
+                    // Show corresponding tab content
+                    const targetId = this.getAttribute('data-target');
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+        });
