@@ -246,31 +246,6 @@
             font-size: clamp(0.9rem, 2vw, 1rem);
         }
 
-        /* Redacted Text */
-        .redacted {
-            background: linear-gradient(to right, #444 40%, #000 60%);
-            color: transparent;
-            border-radius: 3px;
-            padding: 0 4px;
-            display: inline-block;
-            animation: blink 1.4s infinite alternate;
-        }
-
-        @keyframes blink {
-            0% {opacity: 1;}
-            100% {opacity: 0.6;}
-        }
-
-        .redacted::after {
-            content: '[REDACTED]';
-            color: var(--text-color);
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            font-size: clamp(0.8rem, 2vw, 0.9rem);
-        }
-
         body.dark-mode .redacted::after { color: var(--dark-text); }
 
         /* Lists */
@@ -710,12 +685,12 @@
                         </ul>
                     </div>
                     <div class="card">
-                        <h3 class="card-title"><span class="redacted">Life Management System</span></h3>
+                        <h3 class="card-title">Life Management System</h3>
                         <p class="card-period">In planning...</p>
                         <p>Designed as a personal tool to bring structure to life outside work - built using full-stack principles and best practices learned during placement at Intapp.</p>
                         <ul>
-                            <li><strong>Tech:</strong> C# / .NET, SQL, HTML/CSS, JavaScript, Notion API</li>
-                            <li>>Some parts still behind closed doors...</span></li>
+                            <li><strong>Planned Tech:</strong> C# / .NET, SQL, HTML/CSS, JavaScript, Notion API</li>
+                            <li>Some parts still behind closed doors...</span></li>
                         </ul>
                     </div>
                 </div>
