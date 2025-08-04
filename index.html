@@ -248,11 +248,17 @@
 
         /* Redacted Text */
         .redacted {
-            background: #000;
+            background: linear-gradient(to right, #444 40%, #000 60%);
             color: transparent;
-            user-select: none;
-            position: relative;
+            border-radius: 3px;
+            padding: 0 4px;
             display: inline-block;
+            animation: blink 1.4s infinite alternate;
+        }
+
+        @keyframes blink {
+            0% {opacity: 1;}
+            100% {opacity: 0.6;}
         }
 
         .redacted::after {
@@ -506,7 +512,11 @@
             </div>
             <h2 class="tagline">Software Engineering Student</h2>
             <div class="about-me">
-                <p>Disciplined, technical, and energetic Software Engineering student with over 2.5 years of experience in an intense healthcare environment, demonstrating reliability and strong work ethic. Possessing 5+ years of computer science study with a consistent academic record. Skilled in leading and collaborating in team settings, with expertise in user-centric design, relationship-building, and effective communication.</p>
+                <p>
+                I'm a Software Engineering Student at Queen's University Belfast, currently on placement with Intapp. I'm going to be spending the year getting hands-on with full-stack development and building real software with C# and .NET.
+                <br><br>
+                This website is a bit of a sandbox, a place to collect projects, share things I'm working on and keep track of what I've learned along the way.
+                </p>
                 <a href="CV_19_03_2025.pdf" download="CV_19_03_2025.pdf" class="download-cv">Download CV (PDF)</a>
             </div>
         </div>
@@ -525,9 +535,18 @@
             <div class="container">
                 <h2 class="section-title">Work Experience</h2>
                 <div class="card">
+                    <h3 class="card-title">Software Engineering Placement</h3>
+                    <p class="card-subtitle">Intapp Inc. — Belfast, Co. Antrim</p>
+                    <p class="card-period">August 2025 - Present</p>
+                    <p>Currently in the process on onboarding into a team working full-stack with C# and .NET</p>
+                    <ul>
+                        <li>Will update this in due course</li>
+                    </ul>
+                </div>
+                <div class="card">
                     <h3 class="card-title">Domestic Assistant</h3>
                     <p class="card-subtitle">Omagh Hospital and Primary Care Complex — Omagh, Co. Tyrone</p>
-                    <p class="card-period">August 2022 - Present</p>
+                    <p class="card-period">August 2022 - August 2025</p>
                     <p>Maintained a 95% Domestic Audit Score in a high-pressure healthcare setting.</p>
                     <ul>
                         <li>Ensured hospital facilities met stringent cleanliness and sanitary standards</li>
@@ -544,12 +563,13 @@
             <div class="container">
                 <h2 class="section-title">Current Focus</h2>
                 <div class="card">
-                    <h3 class="card-title">Academic & Professional Development</h3>
-                    <p>Currently focusing on advancing my Software Engineering skills through:</p>
+                    <h3 class="card-title">From Student to Developer</h3>
+                    <p>This year, I am focused on levelling up from academic experience to real-world software engineering. Key areas I am focused on:</p>
                     <ul>
-                        <li>Experimenting with Linux based programming and terminal work</li>
-                        <li>Planning a future project on part time job salary tracking</li>
-                        <li>Preparing for placement opportunities in 2025</li>
+                        <li>Adapting to the pace and standards of enterprise development</li>
+                        <li>Building production-level software</li>
+                        <li>Refining my habits — consistency, clarity, and communication</li>
+                        <li>Getting comforable developing on Linux/outside of Windows.</li>
                     </ul>
                 </div>
             </div>
@@ -579,11 +599,11 @@
                                 <div class="progress-container"><div class="progress-bar" style="width: 78%"></div></div></li>
                             <li>Professional Skills - 73%
                                 <div class="progress-container"><div class="progress-bar" style="width: 73%"></div></div></li>
-                            <li>Software Engineering - TBD
+                            <li>Software Engineering - 63%
                                 <div class="progress-container"><div class="progress-bar" style="width: 0%"></div></div></li>
                             <li>Systems Security - 72%
                                 <div class="progress-container"><div class="progress-bar" style="width: 72%"></div></div></li>
-                            <li>Service Programming - TBD
+                            <li>Service Programming - 58%
                                 <div class="progress-container"><div class="progress-bar" style="width: 0%"></div></div></li>
                         </ul>
                     </div>
@@ -690,12 +710,13 @@
                         </ul>
                     </div>
                     <div class="card">
-                        <h3 class="card-title"><span class="redacted">Part-Time Job Analytics Tool</span></h3>
-                        <p class="card-period">TBD</p>
-                        <p>A planned tool to <span class="redacted">optimize part-time work efficiency</span>. Details currently under development.</p>
+                        <h3 class="card-title"><span class="redacted">Life Management System</span></h3>
+                        <p class="card-period">In planning...</p>
+                        <p>Designed as a personal tool to bring structure to life outside work - built using full-stack principles and best practices learned during placement at Intapp.</p>
                         <ul>
-                            <li><strong>Tech:</strong> <span class="redacted">Python, Pandas, Matplotlib</span></li>
-                            <li><span class="redacted">Future implementation pending</span></li>
+                            <li><strong>Tech:</strong> C# / .NET, PostgreSQL, HTML/CSS, JavaScript, Notion API</li>
+                            <li><em>Modular, extensible, and proudly over-engineered</em></li>
+                            <li><span class="redacted">Some parts still behind closed doors...</span></li>
                         </ul>
                     </div>
                 </div>
