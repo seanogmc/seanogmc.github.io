@@ -474,6 +474,22 @@
             margin:0 auto 1.5rem;
             display: block;
         }
+
+        /* Adjust image size for medium sized screens */
+        @media screen and (max-width: 768px) {
+            .profile-image {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        /* Adjust image size for phone screens */
+        @media screen and (max-width: 480px) {
+            .profile-image {
+                width: 140px;
+                height: 140px;
+            }
+        }
         
     </style>
 </head>
