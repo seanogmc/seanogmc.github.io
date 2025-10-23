@@ -1,755 +1,926 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sean Óg McCartan - Software Engineering Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a2b4a;
-            --secondary-color: #00a8ff;
-            --accent-color: #ff6b6b;
-            --background-color: #f5f7fa;
-            --text-color: #2d3436;
-            --card-bg: #ffffff;
-            --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-            --dark-bg: #1e272e;
-            --dark-text: #dfe6e9;
-            --dark-card-bg: #2d3436;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sean Óg McCartan - Software Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #1a2b4a;
+      --secondary-color: #00a8ff;
+      --accent-color: #ff6b6b;
+      --background-color: #f5f7fa;
+      --text-color: #2d3436;
+      --card-bg: #ffffff;
+      --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+      --dark-bg: #1e272e;
+      --dark-text: #dfe6e9;
+      --dark-card-bg: #2d3436;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-            transition: background-color 0.3s, color 0.3s;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
 
-        body {
-            background: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    body {
+      background: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-        body.dark-mode {
-            background: var(--dark-bg);
-            color: var(--dark-text);
-        }
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
 
-        body.dark-mode .card { background: var(--dark-card-bg); }
-        body.dark-mode .contact-info a, body.dark-mode .contact-info span { color: var(--dark-text); }
-        body.dark-mode .about-me { background: rgba(255, 255, 255, 0.05); }
-        body.dark-mode .card-title, body.dark-mode .card-subtitle { color: var(--dark-text); }
-        body.dark-mode .card-period { color: #b2bec3; }
-        body.dark-mode .section-title { color: var(--secondary-color); }
-        body.dark-mode .download-cv { background: var(--secondary-color); }
-        body.dark-mode .download-cv:hover { background: #0097e6; }
+    body.dark-mode .card {
+      background: var(--dark-card-bg);
+    }
 
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 15px;
-        }
+    body.dark-mode .contact-info a,
+    body.dark-mode .contact-info span {
+      color: var(--dark-text);
+    }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 4rem 0;
-            position: relative;
-        }
+    body.dark-mode .about-me {
+      background: rgba(255, 255, 255, 0.05);
+    }
 
-        header::after {
-            content: '';
-            position: absolute;
-            bottom: -30px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: var(--background-color);
-            transform: skewY(-2deg);
-        }
+    body.dark-mode .card-title,
+    body.dark-mode .card-subtitle {
+      color: var(--dark-text);
+    }
 
-        body.dark-mode header::after { background: var(--dark-bg); }
+    body.dark-mode .card-period {
+      color: #b2bec3;
+    }
 
-        .header-content {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
+    body.dark-mode .section-title {
+      color: var(--secondary-color);
+    }
 
-        .profile-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            animation: slideIn 1s ease;
-        }
+    body.dark-mode .download-cv {
+      background: var(--secondary-color);
+    }
 
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
-            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-        }
+    body.dark-mode .download-cv:hover {
+      background: #0097e6;
+    }
 
-        .contact-info a, .contact-info span {
-            color: white;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
-        }
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
 
-        .contact-info a:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-3px);
-        }
+    /* Header */
+    header {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+      padding: 4rem 0;
+      position: relative;
+    }
 
-        .tagline {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
-        }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background: var(--background-color);
+      transform: skewY(-2deg);
+    }
 
-        .about-me {
-            max-width: 800px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 1.5rem;
-            border-radius: 15px;
-            backdrop-filter: blur(8px);
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-        }
+    body.dark-mode header::after {
+      background: var(--dark-bg);
+    }
 
-        .download-cv {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.6rem 1.5rem;
-            background: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-            transition: all 0.3s ease;
-        }
+    .header-content {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
 
-        .download-cv:hover {
-            transform: scale(1.05);
-            background: #e65c5c;
-        }
+    .profile-title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      animation: slideIn 1s ease;
+    }
 
-        /* Side Navigation */
-        .side-nav {
-            position: fixed;
-            left: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            z-index: 1000;
-        }
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    }
 
-        .nav-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--primary-color);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+    .contact-info a,
+    .contact-info span {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
 
-        .nav-dot:hover, .nav-dot.active {
-            background: var(--secondary-color);
-            transform: scale(1.3);
-        }
+    .contact-info a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
 
-        /* Sections */
-        section {
-            padding: 4rem 0;
-            background: linear-gradient(to bottom, rgba(245, 247, 250, 0.8), rgba(245, 247, 250, 1));
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
+    .tagline {
+      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
 
-        body.dark-mode section {
-            background: linear-gradient(to bottom, rgba(30, 39, 46, 0.8), rgba(30, 39, 46, 1));
-        }
+    .about-me {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 1.5rem;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    }
 
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    .download-cv {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--accent-color);
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      transition: all 0.3s ease;
+    }
 
-        .section-title {
-            text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.5rem);
-            color: var(--primary-color);
-            margin-bottom: 2rem;
-            font-weight: 600;
-            position: relative;
-        }
+    .download-cv:hover {
+      transform: scale(1.05);
+      background: #e65c5c;
+    }
 
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 4px;
-            background: var(--secondary-color);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
+    /* Side Navigation */
+    .side-nav {
+      position: fixed;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      z-index: 1000;
+    }
 
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
+    .nav-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--primary-color);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(31, 38, 135, 0.15);
-        }
+    .nav-dot:hover,
+    .nav-dot.active {
+      background: var(--secondary-color);
+      transform: scale(1.3);
+    }
 
-        .card-title {
-            color: var(--primary-color);
-            font-size: clamp(1.4rem, 3vw, 1.8rem);
-            margin-bottom: 0.8rem;
-        }
+    /* Sections */
+    section {
+      padding: 4rem 0;
+      background: linear-gradient(to bottom, rgba(245, 247, 250, 0.8), rgba(245, 247, 250, 1));
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
 
-        .card-subtitle {
-            color: var(--secondary-color);
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            margin-bottom: 0.5rem;
-        }
+    body.dark-mode section {
+      background: linear-gradient(to bottom, rgba(30, 39, 46, 0.8), rgba(30, 39, 46, 1));
+    }
 
-        .card-period {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-        }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-        body.dark-mode .redacted::after { color: var(--dark-text); }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      color: var(--primary-color);
+      margin-bottom: 2rem;
+      font-weight: 600;
+      position: relative;
+    }
 
-        /* Lists */
-        ul {
-            margin-left: 1rem;
-            list-style: none;
-        }
+    .section-title::after {
+      content: '';
+      width: 80px;
+      height: 4px;
+      background: var(--secondary-color);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 2px;
+    }
 
-        ul li {
-            position: relative;
-            margin: 0.8rem 0;
-            padding-left: 1.2rem;
-            font-size: clamp(0.9rem, 2vw, 1rem);
-        }
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
 
-        ul li::before {
-            content: '➜';
-            color: var(--secondary-color);
-            position: absolute;
-            left: 0;
-            font-size: 1rem;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(31, 38, 135, 0.15);
+    }
 
-        /* Skills */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
+    .card-title {
+      color: var(--primary-color);
+      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      margin-bottom: 0.8rem;
+    }
 
-        .skill-tag {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            margin: 0.4rem;
-            font-size: clamp(0.8rem, 2vw, 0.95rem);
-            transition: all 0.3s ease;
-        }
+    .card-subtitle {
+      color: var(--secondary-color);
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      margin-bottom: 0.5rem;
+    }
 
-        .skill-tag:hover {
-            transform: scale(1.05);
-            background: var(--accent-color);
-        }
+    .card-period {
+      color: #666;
+      font-style: italic;
+      margin-bottom: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
 
-        .progress-container {
-            background: #eee;
-            border-radius: 8px;
-            height: 6px;
-            margin-top: 0.4rem;
-            width: 100%;
-        }
+    body.dark-mode .redacted::after {
+      color: var(--dark-text);
+    }
 
-        body.dark-mode .progress-container { background: #57606f; }
+    /* Lists */
+    ul {
+      margin-left: 1rem;
+      list-style: none;
+    }
 
-        .progress-bar {
-            height: 100%;
-            background: var(--secondary-color);
-            border-radius: 8px;
-            transition: width 1.5s ease-in-out;
-        }
+    ul li {
+      position: relative;
+      margin: 0.8rem 0;
+      padding-left: 1.2rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+    }
 
-        /* Grades */
-        .grades-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
+    ul li::before {
+      content: '➜';
+      color: var(--secondary-color);
+      position: absolute;
+      left: 0;
+      font-size: 1rem;
+    }
 
-        /* Footer */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-            position: relative;
-        }
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -30px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            background: var(--primary-color);
-            transform: skewY(-2deg);
-        }
+    .skill-tag {
+      display: inline-block;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin: 0.4rem;
+      font-size: clamp(0.8rem, 2vw, 0.95rem);
+      transition: all 0.3s ease;
+    }
 
-        /* Back to Top */
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background: var(--secondary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+    .skill-tag:hover {
+      transform: scale(1.05);
+      background: var(--accent-color);
+    }
 
-        .back-to-top.visible {
-            opacity: 1;
-        }
+    .progress-container {
+      background: #eee;
+      border-radius: 8px;
+      height: 6px;
+      margin-top: 0.4rem;
+      width: 100%;
+    }
 
-        .back-to-top:hover {
-            transform: scale(1.1);
-            background: var(--accent-color);
-        }
+    body.dark-mode .progress-container {
+      background: #57606f;
+    }
 
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            width: 40px;
-            height: 40px;
-            background: var(--card-bg);
-            color: var(--primary-color);
-            border-radius: 50%;
-            border: 2px solid var(--primary-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
+    .progress-bar {
+      height: 100%;
+      background: var(--secondary-color);
+      border-radius: 8px;
+      transition: width 1.5s ease-in-out;
+    }
 
-        body.dark-mode .dark-mode-toggle {
-            background: var(--dark-card-bg);
-            color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
+    /* Grades */
+    .grades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
 
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-            background: var(--secondary-color);
-            color: white;
-            border-color: var(--secondary-color);
-        }
+    /* Footer */
+    footer {
+      background: var(--primary-color);
+      color: white;
+      padding: 3rem 0;
+      text-align: center;
+      position: relative;
+    }
 
-        body.dark-mode .dark-mode-toggle:hover {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
+    footer::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background: var(--primary-color);
+      transform: skewY(-2deg);
+    }
 
-        /* Animations */
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: var(--secondary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            header { padding: 3rem 0; }
-            .contact-info { flex-direction: column; gap: 0.8rem; }
-            .about-me { padding: 1rem; }
-            .download-cv { padding: 0.5rem 1.2rem; }
-            .side-nav { 
-                position: fixed;
-                top: auto;
-                bottom: 70px;
-                left: 50%;
-                transform: translateX(-50%);
-                flex-direction: row;
-                background: rgba(255, 255, 255, 0.9);
-                padding: 0.5rem;
-                border-radius: 25px;
-                box-shadow: var(--shadow);
-            }
-            body.dark-mode .side-nav { background: rgba(30, 39, 46, 0.9); }
-            .nav-dot { width: 8px; height: 8px; }
-            section { padding: 3rem 0; }
-            .card { padding: 1.2rem; }
-            .grades-grid, .skills-grid { grid-template-columns: 1fr; }
-            .section-title::after { width: 60px; }
-        }
+    .back-to-top.visible {
+      opacity: 1;
+    }
 
-        @media (max-width: 480px) {
-            .container { padding: 0 10px; }
-            .profile-title { font-size: 1.8rem; }
-            .tagline { font-size: 1rem; }
-            .card-title { font-size: 1.2rem; }
-            .card-subtitle { font-size: 0.9rem; }
-            .skill-tag { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+    .back-to-top:hover {
+      transform: scale(1.1);
+      background: var(--accent-color);
+    }
 
-        }
+    /* Dark Mode Toggle */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: var(--card-bg);
+      color: var(--primary-color);
+      border-radius: 50%;
+      border: 2px solid var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
 
-        /* Profile Picture */
-        .profile-image {
-            width: 240px;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid white;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            margin:0 auto 1.5rem;
-            display: block;
-        }
+    body.dark-mode .dark-mode-toggle {
+      background: var(--dark-card-bg);
+      color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
 
-        /* Adjust image size for medium sized screens */
-        @media screen and (max-width: 768px) {
-            .profile-image {
-                width: 180px;
-                height: 180px;
-            }
-        }
+    .dark-mode-toggle:hover {
+      transform: scale(1.1);
+      background: var(--secondary-color);
+      color: white;
+      border-color: var(--secondary-color);
+    }
 
-        /* Adjust image size for phone screens */
-        @media screen and (max-width: 480px) {
-            .profile-image {
-                width: 140px;
-                height: 140px;
-            }
-        }
-        
-    </style>
+    body.dark-mode .dark-mode-toggle:hover {
+      background: var(--accent-color);
+      color: white;
+      border-color: var(--accent-color);
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      header {
+        padding: 3rem 0;
+      }
+
+      .contact-info {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .about-me {
+        padding: 1rem;
+      }
+
+      .download-cv {
+        padding: 0.5rem 1.2rem;
+      }
+
+      .side-nav {
+        position: fixed;
+        top: auto;
+        bottom: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem;
+        border-radius: 25px;
+        box-shadow: var(--shadow);
+      }
+
+      body.dark-mode .side-nav {
+        background: rgba(30, 39, 46, 0.9);
+      }
+
+      .nav-dot {
+        width: 8px;
+        height: 8px;
+      }
+
+      section {
+        padding: 3rem 0;
+      }
+
+      .card {
+        padding: 1.2rem;
+      }
+
+      .grades-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title::after {
+        width: 60px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 10px;
+      }
+
+      .profile-title {
+        font-size: 1.8rem;
+      }
+
+      .tagline {
+        font-size: 1rem;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+      }
+
+      .card-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .skill-tag {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.8rem;
+      }
+
+    }
+
+    /* Profile Picture */
+    .profile-image {
+      width: 240px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin: 0 auto 1.5rem;
+      display: block;
+    }
+
+    /* Adjust image size for medium sized screens */
+    @media screen and (max-width: 768px) {
+      .profile-image {
+        width: 180px;
+        height: 180px;
+      }
+    }
+
+    /* Adjust image size for phone screens */
+    @media screen and (max-width: 480px) {
+      .profile-image {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <div class="container header-content">
-            <img src="profile_pic.jpg" alt="Sean Óg McCartan Profile Picture" class="profile-image">
-            <h1 class="profile-title">Sean Óg McCartan</h1>
-            <div class="contact-info">
-                <a href="tel:+447938495942"><i class="fas fa-phone"></i> 079 3849 5942</a>
-                <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
-                <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <span><i class="fas fa-map-marker-alt"></i> Belfast / Omagh</span>
-            </div>
-            <h2 class="tagline">Software Engineering Student</h2>
-            <div class="about-me">
-                <p>
-                I'm a Software Engineering Student at Queen's University Belfast, currently on placement with Intapp. I'm going to be spending the year getting hands-on with full-stack development and building real software with C# and .NET.
-                <br><br>
-                This website is a bit of a sandbox, a place to collect projects, share things I'm working on and keep track of what I've learned along the way.
-                </p>
-                <a href="CV_19_03_2025.pdf" download="CV_19_03_2025.pdf" class="download-cv">Download CV (PDF)</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="side-nav">
-        <a href="#experience" class="nav-dot" data-section="experience"></a>
-        <a href="#current-focus" class="nav-dot" data-section="current-focus"></a>
-        <a href="#education" class="nav-dot" data-section="education"></a>
-        <a href="#skills" class="nav-dot" data-section="skills"></a>
-        <a href="#projects" class="nav-dot" data-section="projects"></a>
+  <header>
+    <div class="container header-content">
+      <img src="profile_pic.jpg" alt="Sean Óg McCartan Profile Picture" class="profile-image">
+      <h1 class="profile-title">Sean Óg McCartan</h1>
+      <div class="contact-info">
+        <a href="tel:+447938495942"><i class="fas fa-phone"></i> 079 3849 5942</a>
+        <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
+        <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i
+            class="fab fa-linkedin"></i> LinkedIn</a>
+        <span><i class="fas fa-map-marker-alt"></i> Belfast / Omagh</span>
+      </div>
+      <h2 class="tagline">Software Engineering Student</h2>
+      <div class="about-me">
+        <p>
+          I'm a Software Engineering Student at Queen's University Belfast, currently on placement with Intapp. I'm
+          going to be spending the year getting hands-on with full-stack development and building real software with C#
+          and .NET.
+          <br><br>
+          This website is a bit of a sandbox, a place to collect projects, share things I'm working on and keep track of
+          what I've learned along the way.
+        </p>
+        <a href="CV_19_03_2025.pdf" download="CV_19_03_2025.pdf" class="download-cv">Download CV (PDF)</a>
+      </div>
     </div>
+  </header>
 
-    <main>
-        <section id="experience">
-            <div class="container">
-                <h2 class="section-title">Work Experience</h2>
-                <div class="card">
-                    <h3 class="card-title">Software Engineering Placement</h3>
-                    <p class="card-subtitle">Intapp Inc. — Belfast, Co. Antrim</p>
-                    <p class="card-period">August 2025 - Present</p>
-                    <p>Currently 2 months into my placement year, developing across both frontend and backend:p>
-                    <ul>
-                        <li>Working daily with <b>C# .NET, React, JavaScript and SQL</b>, with some exposure to <b>Azure</b> services.</li>
-                        <li>Maintaining internal management services through regular pull requests and feature updates.</li>
-                        <li>Gaining experience with authentication, API integrations and database management.</li>
-                        <li>Beginning to branch into the main product codebase, building familiarity with core service layers and system architecture.</li>
-                        <li>Will continue to update this section as the year progresses.</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">Domestic Assistant</h3>
-                    <p class="card-subtitle">Omagh Hospital and Primary Care Complex — Omagh, Co. Tyrone</p>
-                    <p class="card-period">August 2022 - August 2025</p>
-                    <p>Maintained a 95% Domestic Audit Score in a high-pressure healthcare setting.</p>
-                    <ul>
-                        <li>Ensured hospital facilities met stringent cleanliness and sanitary standards</li>
-                        <li>Performed weekly COVID-19 and high-risk infection control procedures</li>
-                        <li>Managed hazardous chemicals with precision and safety</li>
-                        <li>Maintained a professional and approachable demeanor with staff and patients</li>
-                        <li>Upheld strict patient confidentiality and prioritized their wellbeing</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+  <div class="side-nav">
+    <a href="#experience" class="nav-dot" data-section="experience"></a>
+    <a href="#current-focus" class="nav-dot" data-section="current-focus"></a>
+    <a href="#education" class="nav-dot" data-section="education"></a>
+    <a href="#skills" class="nav-dot" data-section="skills"></a>
+    <a href="#projects" class="nav-dot" data-section="projects"></a>
+  </div>
 
-        <section id="current-focus">
-            <div class="container">
-                <h2 class="section-title">Current Focus</h2>
-                <div class="card">
-                    <h3 class="card-title">From Student to Developer</h3>
-                    <p>This year, I am focused on levelling up from academic experience to real-world software engineering. Key areas I am focused on:</p>
-                    <ul>
-                        <li>Adapting to the pace and standards of enterprise development</li>
-                        <li>Building production-level software</li>
-                        <li>Refining my habits — consistency, clarity, and communication</li>
-                        <li>Getting comforable developing on Linux/outside of Windows.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <div class="container">
-                <h2 class="section-title">Education</h2>
-                <div class="card">
-                    <h3 class="card-title">BEng Software Engineering</h3>
-                    <p class="card-subtitle">Queen's University — Belfast, Co. Antrim</p>
-                    <p class="card-period">September 2023 - Present</p>
-                </div>
-                <div class="card">
-                    <h3 class="card-title">A-Levels</h3>
-                    <p class="card-subtitle">Christian Brother's Grammar School — Omagh, Co. Tyrone</p>
-                    <p class="card-period">September 2016 – June 2023</p>
-                    <p>Physics, Technology & Design, Software Systems Development</p>
-                </div>
-
-                <h2 class="section-title">Academic Performance</h2>
-                <div class="grades-grid">
-                    <div class="card">
-                        <h3 class="card-title">Second Year (May 2025)</h3>
-                        <ul>
-                            <li>Data Structures and Algorithms - 78%
-                                <div class="progress-container"><div class="progress-bar" style="width: 78%"></div></div></li>
-                            <li>Professional Skills - 73%
-                                <div class="progress-container"><div class="progress-bar" style="width: 73%"></div></div></li>
-                            <li>Software Engineering - 63%
-                                <div class="progress-container"><div class="progress-bar" style="width: 63%"></div></div></li>
-                            <li>Systems Security - 72%
-                                <div class="progress-container"><div class="progress-bar" style="width: 72%"></div></div></li>
-                            <li>Service Programming - 60%
-                                <div class="progress-container"><div class="progress-bar" style="width: 60%"></div></div></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">First Year (May 2024)</h3>
-                        <ul>
-                            <li>Databases - 57%
-                                <div class="progress-container"><div class="progress-bar" style="width: 57%"></div></div></li>
-                            <li>Maths for Computing - 63%
-                                <div class="progress-container"><div class="progress-bar" style="width: 63%"></div></div></li>
-                            <li>Programming (Java) - 58%
-                                <div class="progress-container"><div class="progress-bar" style="width: 58%"></div></div></li>
-                            <li>Cyber Security - 69%
-                                <div class="progress-container"><div class="progress-bar" style="width: 69%"></div></div></li>
-                            <li>Computer Architecture - 52%
-                                <div class="progress-container"><div class="progress-bar" style="width: 52%"></div></div></li>
-                            <li>Design Principles - 46%
-                                <div class="progress-container"><div class="progress-bar" style="width: 46%"></div></div></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">A-Levels & AS-Levels</h3>
-                        <p class="card-subtitle">Christian Brothers Grammar School</p>
-                        <ul>
-                            <li>A-Levels (2023): Physics - B, Software Systems - A, Tech & Design - A</li>
-                            <li>AS-Levels (2022): Physics - C, Software Systems - C, Tech & Design - B</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title">Professional Skills</h2>
-                <div class="skills-grid">
-                    <div class="card">
-                        <h3 class="card-title">Programming Languages</h3>
-                        <ul>
-                            <li>Java <div class="progress-container"><div class="progress-bar" style="width: 65%"></div></div></li>
-                            <li>Python <div class="progress-container"><div class="progress-bar" style="width: 45%"></div></div></li>
-                            <li>C# <div class="progress-container"><div class="progress-bar" style="width: 50%"></div></div></li>
-                            <li>C++ <div class="progress-container"><div class="progress-bar" style="width: 65%"></div></div></li>
-                            <li>SQL <div class="progress-container"><div class="progress-bar" style="width: 60%"></div></div></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Web Technologies</h3>
-                        <ul>
-                            <li>HTML <div class="progress-container"><div class="progress-bar" style="width: 50%"></div></div></li>
-                            <li>CSS <div class="progress-container"><div class="progress-bar" style="width: 30%"></div></div></li>
-                            <li>JavaScript <div class="progress-container"><div class="progress-bar" style="width: 30%"></div></div></li>
-                            <li>ASP.NET Core <div class="progress-container"><div class="progress-bar" style="width: 10%"></div></div></li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Tools & Soft Skills</h3>
-                        <div class="skills-list">
-                            <span class="skill-tag">Photoshop</span>
-                            <span class="skill-tag">Circuit Wizard</span>
-                            <span class="skill-tag">Visual Studio</span>
-                            <span class="skill-tag">PyCharm</span>
-                            <span class="skill-tag">IntelliJ</span>
-                            <span class="skill-tag">Problem-solving</span>
-                            <span class="skill-tag">Team Building</span>
-                            <span class="skill-tag">User-centric Design</span>
-                            <span class="skill-tag">Git</span>
-                            <span class="skill-tag">Spring Boot</span>
-                            <span class="skill-tag">Maven</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">CSS Styling</span>
-                            <span class="skill-tag">JavaFX</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="container">
-                <h2 class="section-title">Projects</h2>
-                <div class="skills-grid">
-                    <div class="card">
-                        <h3 class="card-title">Waste Management Educational Platform</h3>
-                        <p class="card-subtitle">Software Engineering & Systems Development Project</p>
-                        <p class="card-period">September 2024 - March 2025</p>
-                        <p>Developed a real-world solution to address waste management challenges in Johannesburg, focusing on education and awareness.</p>
-                        <ul>
-                            <li>Engineered an interactive educational experience using Java, JavaFX, and SceneBuilder that simulates real-world environmental problem-solving</li>
-                            <li>Designed a modern user interface with CSS styling to enhance user engagement and learning experience</li>
-                            <li>Implemented Git version control system for seamless team collaboration and efficient code management</li>
-                            <li>Created comprehensive documentation including detailed unit and acceptance testing according to industry standards</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Civil Engineering Microservices System</h3>
-                        <p class="card-subtitle">Service Oriented Programming Project</p>
-                        <p class="card-period">September 2024 - March 2025</p>
-                        <p>Led a team in developing an integrated API system with multiple microservices for a civil engineering application.</p>
-                        <ul>
-                            <li>Architected and integrated three distinct microservices using REST APIs to create a robust and scalable system</li>
-                            <li>Built the entire solution using Spring Boot and Maven, implementing industry-standard dependency management</li>
-                            <li>Applied object-oriented programming principles to develop maintainable, extensible code structures</li>
-                            <li>Gained practical experience in designing and implementing service-oriented architecture for complex enterprise systems</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3 class="card-title">Life Management System</h3>
-                        <p class="card-period">In planning...</p>
-                        <p>Designed as a personal tool to bring structure to life outside work - built using full-stack principles and best practices learned during placement at Intapp.</p>
-                        <ul>
-                            <li><strong>Planned Tech:</strong> C# / .NET, SQL, HTML/CSS, JavaScript, Notion API</li>
-                            <li>Some parts still behind closed doors...</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>© 2025 Sean Óg McCartan. All Rights Reserved.</p>
+  <main>
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Work Experience</h2>
+        <div class="card">
+          <h3 class="card-title">Software Engineering Placement</h3>
+          <p class="card-subtitle">Intapp Inc. — Belfast, Co. Antrim</p>
+          <p class="card-period">August 2025 - Present</p>
+          <p>Currently 2 months into my placement year, developing across both frontend and backend.>
+          <ul>
+            <li>Working daily with <b>C# .NET, React, JavaScript and SQL</b>, with some exposure to <b>Azure</b>
+              services.</li>
+            <li>Maintaining internal management services through regular pull requests and feature updates.</li>
+            <li>Gaining experience with authentication, API integrations and database management.</li>
+            <li>Beginning to branch into the main product codebase, building familiarity with core service layers and
+              system architecture.</li>
+            <li>Will continue to update this section as the year progresses.</li>
+          </ul>
         </div>
-    </footer>
+        <div class="card">
+          <h3 class="card-title">Domestic Assistant</h3>
+          <p class="card-subtitle">Omagh Hospital and Primary Care Complex — Omagh, Co. Tyrone</p>
+          <p class="card-period">August 2022 - August 2025</p>
+          <p>Maintained a 95% Domestic Audit Score in a high-pressure healthcare setting.</p>
+          <ul>
+            <li>Ensured hospital facilities met stringent cleanliness and sanitary standards</li>
+            <li>Performed weekly COVID-19 and high-risk infection control procedures</li>
+            <li>Managed hazardous chemicals with precision and safety</li>
+            <li>Maintained a professional and approachable demeanor with staff and patients</li>
+            <li>Upheld strict patient confidentiality and prioritized their wellbeing</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
-    <div class="dark-mode-toggle"><i class="fas fa-moon"></i></div>
+    <section id="current-focus">
+      <div class="container">
+        <h2 class="section-title">Current Focus</h2>
+        <div class="card">
+          <h3 class="card-title">From Student to Developer</h3>
+          <p>This year, I am focused on levelling up from academic experience to real-world software engineering. Key
+            areas I am focused on:</p>
+          <ul>
+            <li>Adapting to the pace and standards of enterprise development</li>
+            <li>Building production-level software</li>
+            <li>Refining my habits — consistency, clarity, and communication</li>
+            <li>Getting comforable developing on Linux/outside of Windows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    <script>
-        // Scroll Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    const navDot = document.querySelector(`.nav-dot[data-section="${entry.target.id}"]`);
-                    document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
-                    if (navDot) navDot.classList.add('active');
-                }
-            });
-        }, { threshold: 0.3 });
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education</h2>
+        <div class="card">
+          <h3 class="card-title">BEng Software Engineering</h3>
+          <p class="card-subtitle">Queen's University — Belfast, Co. Antrim</p>
+          <p class="card-period">September 2023 - Present</p>
+        </div>
+        <div class="card">
+          <h3 class="card-title">A-Levels</h3>
+          <p class="card-subtitle">Christian Brother's Grammar School — Omagh, Co. Tyrone</p>
+          <p class="card-period">September 2016 – June 2023</p>
+          <p>Physics, Technology & Design, Software Systems Development</p>
+        </div>
 
-        document.querySelectorAll('section').forEach(section => observer.observe(section));
+        <h2 class="section-title">Academic Performance</h2>
+        <div class="grades-grid">
+          <div class="card">
+            <h3 class="card-title">Second Year (May 2025)</h3>
+            <ul>
+              <li>Data Structures and Algorithms - 78%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 78%"></div>
+                </div>
+              </li>
+              <li>Professional Skills - 73%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 73%"></div>
+                </div>
+              </li>
+              <li>Software Engineering - 63%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 63%"></div>
+                </div>
+              </li>
+              <li>Systems Security - 72%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 72%"></div>
+                </div>
+              </li>
+              <li>Service Programming - 60%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 60%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">First Year (May 2024)</h3>
+            <ul>
+              <li>Databases - 57%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 57%"></div>
+                </div>
+              </li>
+              <li>Maths for Computing - 63%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 63%"></div>
+                </div>
+              </li>
+              <li>Programming (Java) - 58%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 58%"></div>
+                </div>
+              </li>
+              <li>Cyber Security - 69%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 69%"></div>
+                </div>
+              </li>
+              <li>Computer Architecture - 52%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 52%"></div>
+                </div>
+              </li>
+              <li>Design Principles - 46%
+                <div class="progress-container">
+                  <div class="progress-bar" style="width: 46%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">A-Levels & AS-Levels</h3>
+            <p class="card-subtitle">Christian Brothers Grammar School</p>
+            <ul>
+              <li>A-Levels (2023): Physics - B, Software Systems - A, Tech & Design - A</li>
+              <li>AS-Levels (2022): Physics - C, Software Systems - C, Tech & Design - B</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Back to Top
-        const backToTop = document.querySelector('.back-to-top');
-        window.addEventListener('scroll', () => {
-            backToTop.classList.toggle('visible', window.scrollY > 300);
-        });
-        backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Professional Skills</h2>
+        <div class="skills-grid">
+          <div class="card">
+            <h3 class="card-title">Programming Languages</h3>
+            <ul>
+              <li>Java <div class="progress-container">
+                  <div class="progress-bar" style="width: 65%"></div>
+                </div>
+              </li>
+              <li>Python <div class="progress-container">
+                  <div class="progress-bar" style="width: 45%"></div>
+                </div>
+              </li>
+              <li>C# <div class="progress-container">
+                  <div class="progress-bar" style="width: 50%"></div>
+                </div>
+              </li>
+              <li>C++ <div class="progress-container">
+                  <div class="progress-bar" style="width: 65%"></div>
+                </div>
+              </li>
+              <li>SQL <div class="progress-container">
+                  <div class="progress-bar" style="width: 60%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Web Technologies</h3>
+            <ul>
+              <li>HTML <div class="progress-container">
+                  <div class="progress-bar" style="width: 50%"></div>
+                </div>
+              </li>
+              <li>CSS <div class="progress-container">
+                  <div class="progress-bar" style="width: 30%"></div>
+                </div>
+              </li>
+              <li>JavaScript <div class="progress-container">
+                  <div class="progress-bar" style="width: 30%"></div>
+                </div>
+              </li>
+              <li>ASP.NET Core <div class="progress-container">
+                  <div class="progress-bar" style="width: 10%"></div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Tools & Soft Skills</h3>
+            <div class="skills-list">
+              <span class="skill-tag">Photoshop</span>
+              <span class="skill-tag">Circuit Wizard</span>
+              <span class="skill-tag">Visual Studio</span>
+              <span class="skill-tag">PyCharm</span>
+              <span class="skill-tag">IntelliJ</span>
+              <span class="skill-tag">Problem-solving</span>
+              <span class="skill-tag">Team Building</span>
+              <span class="skill-tag">User-centric Design</span>
+              <span class="skill-tag">Git</span>
+              <span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">Maven</span>
+              <span class="skill-tag">REST APIs</span>
+              <span class="skill-tag">CSS Styling</span>
+              <span class="skill-tag">JavaFX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        // Dark Mode Toggle
-        const toggle = document.querySelector('.dark-mode-toggle');
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            toggle.innerHTML = document.body.classList.contains('dark-mode') ? 
-                '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        });
+    <section id="projects">
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="skills-grid">
+          <div class="card">
+            <h3 class="card-title">Waste Management Educational Platform</h3>
+            <p class="card-subtitle">Software Engineering & Systems Development Project</p>
+            <p class="card-period">September 2024 - March 2025</p>
+            <p>Developed a real-world solution to address waste management challenges in Johannesburg, focusing on
+              education and awareness.</p>
+            <ul>
+              <li>Engineered an interactive educational experience using Java, JavaFX, and SceneBuilder that simulates
+                real-world environmental problem-solving</li>
+              <li>Designed a modern user interface with CSS styling to enhance user engagement and learning experience
+              </li>
+              <li>Implemented Git version control system for seamless team collaboration and efficient code management
+              </li>
+              <li>Created comprehensive documentation including detailed unit and acceptance testing according to
+                industry standards</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Civil Engineering Microservices System</h3>
+            <p class="card-subtitle">Service Oriented Programming Project</p>
+            <p class="card-period">September 2024 - March 2025</p>
+            <p>Led a team in developing an integrated API system with multiple microservices for a civil engineering
+              application.</p>
+            <ul>
+              <li>Architected and integrated three distinct microservices using REST APIs to create a robust and
+                scalable system</li>
+              <li>Built the entire solution using Spring Boot and Maven, implementing industry-standard dependency
+                management</li>
+              <li>Applied object-oriented programming principles to develop maintainable, extensible code structures
+              </li>
+              <li>Gained practical experience in designing and implementing service-oriented architecture for complex
+                enterprise systems</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Life Management System</h3>
+            <p class="card-period">In planning...</p>
+            <p>Designed as a personal tool to bring structure to life outside work - built using full-stack principles
+              and best practices learned during placement at Intapp.</p>
+            <ul>
+              <li><strong>Planned Tech:</strong> C# / .NET, SQL, HTML/CSS, JavaScript, Notion API</li>
+              <li>Some parts still behind closed doors...</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        // Smooth Scroll for Side Nav
-        document.querySelectorAll('.nav-dot').forEach(dot => {
-            dot.addEventListener('click', (e) => {
-                e.preventDefault();
-                const section = document.querySelector(dot.getAttribute('href'));
-                section.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+  <footer>
+    <div class="container">
+      <p>© 2025 Sean Óg McCartan. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
+  <div class="dark-mode-toggle"><i class="fas fa-moon"></i></div>
+
+  <script>
+    // Scroll Animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          const navDot = document.querySelector(`.nav-dot[data-section="${entry.target.id}"]`);
+          document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
+          if (navDot) navDot.classList.add('active');
+        }
+      });
+    }, {threshold: 0.3});
+
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+    // Back to Top
+    const backToTop = document.querySelector('.back-to-top');
+    window.addEventListener('scroll', () => {
+      backToTop.classList.toggle('visible', window.scrollY > 300);
+    });
+    backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+    // Dark Mode Toggle
+    const toggle = document.querySelector('.dark-mode-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      toggle.innerHTML = document.body.classList.contains('dark-mode') ?
+        '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+
+    // Smooth Scroll for Side Nav
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = document.querySelector(dot.getAttribute('href'));
+        section.scrollIntoView({behavior: 'smooth'});
+      });
+    });
+  </script>
 </body>
+
 </html>
