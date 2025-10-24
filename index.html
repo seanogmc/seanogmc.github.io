@@ -563,36 +563,20 @@
         height: 140px;
       }
     }
+
+    /* Subtle anchor tag styling */
+    .discrete-link {
+      color: var(--accent-color);
+      text-decoration: none;
+    }
+
+    .discrete-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
 <body>
-  <header>
-    <div class="container header-content">
-      <img src="profile_pic.jpg" alt="Sean Óg McCartan Profile Picture" class="profile-image">
-      <h1 class="profile-title">Sean Óg McCartan</h1>
-      <div class="contact-info">
-        <a href="tel:+447938495942"><i class="fas fa-phone"></i> 079 3849 5942</a>
-        <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
-        <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i
-            class="fab fa-linkedin"></i> LinkedIn</a>
-        <span><i class="fas fa-map-marker-alt"></i> Belfast / Omagh</span>
-      </div>
-      <h2 class="tagline">Software Engineering Student</h2>
-      <div class="about-me">
-        <p>
-          I'm a Software Engineering Student at Queen's University Belfast, currently on placement with Intapp. I'm
-          going to be spending the year getting hands-on with full-stack development and building real software with C#
-          and .NET.
-          <br><br>
-          This website is a bit of a sandbox, a place to collect projects, share things I'm working on and keep track of
-          what I've learned along the way.
-        </p>
-        <a href="CV_19_03_2025.pdf" download="CV_19_03_2025.pdf" class="download-cv">Download CV (PDF)</a>
-      </div>
-    </div>
-  </header>
-
   <div class="side-nav">
     <a href="#experience" class="nav-dot" data-section="experience"></a>
     <a href="#current-focus" class="nav-dot" data-section="current-focus"></a>
@@ -600,8 +584,34 @@
     <a href="#skills" class="nav-dot" data-section="skills"></a>
     <a href="#projects" class="nav-dot" data-section="projects"></a>
   </div>
-
   <main>
+    <header>
+      <div class="container header-content">
+        <img src="profile_pic.jpg" alt="Sean Óg McCartan Profile Picture" class="profile-image">
+        <h1 class="profile-title">Sean Óg McCartan</h1>
+        <div class="contact-info">
+          <a href="tel:+447938495942"><i class="fas fa-phone"></i> 079 3849 5942</a>
+          <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
+          <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i
+              class="fab fa-linkedin"></i> LinkedIn</a>
+          <span><i class="fas fa-map-marker-alt"></i> Belfast / Omagh</span>
+        </div>
+        <h2 class="tagline">Software Engineering Student</h2>
+        <div class="about-me">
+          <p>
+            I'm a Software Engineering Student at Queen's University Belfast, currently on placement with
+            <a href="https://intapp.com" class="discrete-link" target="_blank">Intapp</a>.
+            I'm going to be spending the year getting hands-on with full-stack development and building real software
+            with C# and .NET
+            <br><br>
+            This website is a bit of a sandbox, a place to collect projects, share things I'm working on and keep track
+            of
+            what I've learned along the way.
+          </p>
+          <a href="CV_19_03_2025.pdf" download="CV_19_03_2025.pdf" class="download-cv">Download CV (PDF)</a>
+        </div>
+      </div>
+    </header>
     <section id="experience">
       <div class="container">
         <h2 class="section-title">Work Experience</h2>
@@ -652,10 +662,11 @@
         </div>
         <h2 class="section-title">Linux Journey</h2>
         <div class="card">
-          <h3 class="card-title">Windows → Linux</h3>
+          <h3 class="card-title">Windows to Linux</h3>
           <p>As of the 3rd of October I am daily driving linux.</p>
           <ul>
-            <li>Currently running <a href="https://omarchy.org/" target="_blank">Omarchy</a> on my personal laptop.</li>
+            <li>Currently running <a href="https://omarchy.org/" class="discrete-link" target="_blank">Omarchy</a> on my
+              personal laptop.</li>
             <li>In the process of learning Bash, Vim and the other Linux-esque tools.</li>
             <li>Will update this section with my toughts as time goes on.</li>
           </ul>
@@ -670,6 +681,7 @@
           <h3 class="card-title">BEng Software Engineering</h3>
           <p class="card-subtitle">Queen's University — Belfast, Co. Antrim</p>
           <p class="card-period">September 2023 - Present</p>
+          <p>Currently on Placement Year</p>
         </div>
         <div class="card">
           <h3 class="card-title">A-Levels</h3>
