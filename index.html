@@ -4,948 +4,583 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sean Óg McCartan - Software Engineering Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <title>Sean Óg McCartan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-color: #1a2b4a;
-      --secondary-color: #00a8ff;
-      --accent-color: #ff6b6b;
-      --background-color: #f5f7fa;
-      --text-color: #2d3436;
-      --card-bg: #ffffff;
-      --shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
-      --dark-bg: #1e272e;
-      --dark-text: #dfe6e9;
-      --dark-card-bg: #2d3436;
+      --crust: #11111b;
+      --mantle: #181825;
+      --base: #1e1e2e;
+      --surface0: #313244;
+      --surface1: #45475a;
+      --overlay0: #6c7086;
+      --overlay1: #7f849c;
+      --subtext0: #a6adc8;
+      --subtext1: #bac2de;
+      --text: #cdd6f4;
+      --lavender: #b4befe;
+      --blue: #89b4fa;
+      --yellow: #f9e2af;
+      --mauve: #cba6f7;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      transition: background-color 0.3s, color 0.3s;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: var(--background-color);
-      color: var(--text-color);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    body.dark-mode {
-      background: var(--dark-bg);
-      color: var(--dark-text);
-    }
-
-    body.dark-mode .card {
-      background: var(--dark-card-bg);
-    }
-
-    body.dark-mode .contact-info a,
-    body.dark-mode .contact-info span {
-      color: var(--dark-text);
-    }
-
-    body.dark-mode .about-me {
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    body.dark-mode .card-title,
-    body.dark-mode .card-subtitle {
-      color: var(--dark-text);
-    }
-
-    body.dark-mode .card-period {
-      color: #b2bec3;
-    }
-
-    body.dark-mode .section-title {
-      color: var(--secondary-color);
-    }
-
-    body.dark-mode .download-cv {
-      background: var(--secondary-color);
-    }
-
-    body.dark-mode .download-cv:hover {
-      background: #0097e6;
-    }
-
-    .container {
-      max-width: 1300px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-      color: white;
-      padding: 4rem 0;
-      position: relative;
-    }
-
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -30px;
-      left: 0;
-      width: 100%;
-      height: 30px;
-      background: var(--background-color);
-      transform: skewY(-2deg);
-    }
-
-    body.dark-mode header::after {
-      background: var(--dark-bg);
-    }
-
-    .header-content {
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .profile-title {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 700;
-      margin-bottom: 1rem;
-      animation: slideIn 1s ease;
-    }
-
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin: 1.5rem 0;
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-    }
-
-    .contact-info a,
-    .contact-info span {
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      transition: all 0.3s ease;
-    }
-
-    .contact-info a:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: translateY(-3px);
-    }
-
-    .tagline {
-      font-size: clamp(1.2rem, 3vw, 1.5rem);
+      background: var(--base);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 14px;
+      line-height: 1.75;
       font-weight: 300;
-      margin-bottom: 1.5rem;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .about-me {
-      max-width: 800px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 1.5rem;
-      border-radius: 15px;
-      backdrop-filter: blur(8px);
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-    }
-
-    .download-cv {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.5rem;
-      background: var(--accent-color);
-      color: white;
+    a {
+      color: var(--blue);
       text-decoration: none;
-      border-radius: 25px;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--surface1);
     }
 
-    .download-cv:hover {
-      transform: scale(1.05);
-      background: #e65c5c;
+    a:hover {
+      color: var(--lavender);
+      border-bottom-color: var(--lavender);
     }
 
-    /* Side Navigation */
-    .side-nav {
-      position: fixed;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    nav,
+    .hero,
+    .section,
+    footer {
+      border: 1px solid var(--surface0);
+      background: var(--mantle);
+      padding: 1.2rem;
+    }
+
+    nav,
+    .section,
+    footer {
+      margin-top: 1rem;
+    }
+
+    nav {
       display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-      z-index: 1000;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 0;
     }
 
-    .nav-dot {
-      width: 10px;
-      height: 10px;
-      background: var(--primary-color);
-      border-radius: 50%;
-      cursor: pointer;
-      transition: all 0.3s ease;
+    .nav-id {
+      color: var(--lavender);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
     }
 
-    .nav-dot:hover,
-    .nav-dot.active {
-      background: var(--secondary-color);
-      transform: scale(1.3);
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    /* Sections */
-    section {
-      padding: 4rem 0;
-      background: linear-gradient(to bottom, rgba(245, 247, 250, 0.8), rgba(245, 247, 250, 1));
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
+    .nav-links a {
+      color: var(--subtext0);
+      border: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
     }
 
-    body.dark-mode section {
-      background: linear-gradient(to bottom, rgba(30, 39, 46, 0.8), rgba(30, 39, 46, 1));
+    .nav-links a:hover {
+      color: var(--lavender);
     }
 
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .hero {
+      margin-top: 1rem;
+      display: grid;
+      gap: 1.2rem;
     }
 
-    .section-title {
-      text-align: center;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      color: var(--primary-color);
-      margin-bottom: 2rem;
-      font-weight: 600;
-      position: relative;
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
     }
 
-    .section-title::after {
-      content: '';
-      width: 80px;
-      height: 4px;
-      background: var(--secondary-color);
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 2px;
-    }
-
-    /* Cards */
-    .card {
-      background: var(--card-bg);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: var(--shadow);
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(31, 38, 135, 0.15);
-    }
-
-    .card-title {
-      color: var(--primary-color);
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
+    .hero-label {
+      color: var(--overlay1);
+      font-size: 0.74rem;
+      letter-spacing: 0.06em;
       margin-bottom: 0.8rem;
     }
 
-    .card-subtitle {
-      color: var(--secondary-color);
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      margin-bottom: 0.5rem;
+    .hero-name {
+      font-size: clamp(2rem, 7vw, 3.25rem);
+      color: var(--text);
+      line-height: 1.1;
+      margin-bottom: 0.4rem;
+      font-weight: 400;
     }
 
-    .card-period {
-      color: #666;
-      font-style: italic;
-      margin-bottom: 1rem;
-      font-size: clamp(0.9rem, 2vw, 1rem);
+    .hero-sub {
+      color: var(--subtext1);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
     }
 
-    body.dark-mode .redacted::after {
-      color: var(--dark-text);
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      object-position: center top;
+      border: 1px solid var(--surface1);
     }
 
-    /* Lists */
-    ul {
-      margin-left: 1rem;
-      list-style: none;
+    .hero-desc {
+      color: var(--subtext0);
+      max-width: 68ch;
     }
 
-    ul li {
-      position: relative;
-      margin: 0.8rem 0;
-      padding-left: 1.2rem;
-      font-size: clamp(0.9rem, 2vw, 1rem);
+    .hero-meta {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    ul li::before {
-      content: '➜';
-      color: var(--secondary-color);
-      position: absolute;
-      left: 0;
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.8rem;
+      margin-bottom: 1.1rem;
+      border-bottom: 1px solid var(--surface0);
+      padding-bottom: 0.55rem;
+    }
+
+    .section-index {
+      color: var(--overlay0);
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+    }
+
+    .section-title {
       font-size: 1rem;
+      color: var(--text);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
-    /* Skills */
+    .entry,
+    .edu-row,
+    .project {
+      border-top: 1px solid var(--surface0);
+      padding-top: 1rem;
+      margin-top: 1rem;
+    }
+
+    .entry:first-of-type,
+    .edu-row:first-of-type,
+    .project:first-of-type {
+      border-top: none;
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1rem;
+    }
+
+    .entry-date,
+    .edu-date,
+    .entry-org,
+    .project-tag,
+    .edu-institution,
+    .footer-copy {
+      color: var(--overlay1);
+      font-size: 0.78rem;
+    }
+
+    .entry-now,
+    .edu-status,
+    .project-wip {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: var(--mauve);
+      border: 1px solid var(--surface1);
+      padding: 0.15rem 0.5rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+    }
+
+    .entry-title,
+    .edu-degree,
+    .project-name,
+    .footer-sig {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 400;
+      margin-bottom: 0.35rem;
+    }
+
+    .entry-note,
+    .project-desc {
+      color: var(--subtext0);
+      margin: 0.45rem 0 0.7rem;
+    }
+
+    .focus-grid,
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
-    .skill-tag {
-      display: inline-block;
-      background: var(--secondary-color);
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      margin: 0.4rem;
-      font-size: clamp(0.8rem, 2vw, 0.95rem);
-      transition: all 0.3s ease;
+    .focus-grid {
+      grid-template-columns: 1fr 1fr;
     }
 
-    .skill-tag:hover {
-      transform: scale(1.05);
-      background: var(--accent-color);
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
     }
 
-    .progress-container {
-      background: #eee;
-      border-radius: 8px;
-      height: 6px;
-      margin-top: 0.4rem;
-      width: 100%;
+    .focus-block,
+    .skills-grid>div {
+      border: 1px solid var(--surface0);
+      padding: 0.9rem;
+      background: var(--crust);
     }
 
-    body.dark-mode .progress-container {
-      background: #57606f;
+    .focus-label,
+    .skill-label {
+      color: var(--lavender);
+      font-size: 0.72rem;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+      text-transform: lowercase;
     }
 
-    .progress-bar {
-      height: 100%;
-      background: var(--secondary-color);
-      border-radius: 8px;
-      transition: width 1.5s ease-in-out;
-    }
-
-    /* Grades */
-    .grades-grid {
+    .bullets,
+    .skill-items {
+      list-style: none;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
+      gap: 0.35rem;
     }
 
-    /* Footer */
-    footer {
-      background: var(--primary-color);
-      color: white;
-      padding: 3rem 0;
-      text-align: center;
+    .bullets li,
+    .skill-item {
+      color: var(--subtext1);
       position: relative;
+      padding-left: 1rem;
+      font-size: 0.86rem;
     }
 
-    footer::before {
-      content: '';
+    .bullets li::before,
+    .skill-item::before {
+      content: ">";
+      color: var(--lavender);
       position: absolute;
-      top: -30px;
       left: 0;
-      width: 100%;
-      height: 30px;
-      background: var(--primary-color);
-      transform: skewY(-2deg);
     }
 
-    /* Back to Top */
-    .back-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      background: var(--secondary-color);
-      color: white;
-      border-radius: 50%;
+    .bold {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .edu-row {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: baseline;
+      gap: 1rem;
+    }
+
+    .project-header {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      transition: all 0.3s ease;
-      z-index: 1000;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.35rem;
     }
 
-    .back-to-top.visible {
-      opacity: 1;
-    }
-
-    .back-to-top:hover {
-      transform: scale(1.1);
-      background: var(--accent-color);
-    }
-
-    /* Dark Mode Toggle */
-    .dark-mode-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      width: 40px;
-      height: 40px;
-      background: var(--card-bg);
-      color: var(--primary-color);
-      border-radius: 50%;
-      border: 2px solid var(--primary-color);
+    footer {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      z-index: 1000;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
-    body.dark-mode .dark-mode-toggle {
-      background: var(--dark-card-bg);
-      color: var(--secondary-color);
-      border-color: var(--secondary-color);
-    }
+    @media (max-width: 760px) {
 
-    .dark-mode-toggle:hover {
-      transform: scale(1.1);
-      background: var(--secondary-color);
-      color: white;
-      border-color: var(--secondary-color);
-    }
-
-    body.dark-mode .dark-mode-toggle:hover {
-      background: var(--accent-color);
-      color: white;
-      border-color: var(--accent-color);
-    }
-
-    /* Animations */
-    @keyframes slideIn {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      header {
-        padding: 3rem 0;
-      }
-
-      .contact-info {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .about-me {
-        padding: 1rem;
-      }
-
-      .download-cv {
-        padding: 0.5rem 1.2rem;
-      }
-
-      .side-nav {
-        position: fixed;
-        top: auto;
-        bottom: 70px;
-        left: 50%;
-        transform: translateX(-50%);
-        flex-direction: row;
-        background: rgba(255, 255, 255, 0.9);
-        padding: 0.5rem;
-        border-radius: 25px;
-        box-shadow: var(--shadow);
-      }
-
-      body.dark-mode .side-nav {
-        background: rgba(30, 39, 46, 0.9);
-      }
-
-      .nav-dot {
-        width: 8px;
-        height: 8px;
-      }
-
-      section {
-        padding: 3rem 0;
-      }
-
-      .card {
-        padding: 1.2rem;
-      }
-
-      .grades-grid,
+      .entry,
+      .edu-row,
+      .focus-grid,
       .skills-grid {
         grid-template-columns: 1fr;
       }
 
-      .section-title::after {
-        width: 60px;
+      .hero-top,
+      .project-header {
+        flex-direction: column;
+        align-items: flex-start;
       }
-    }
-
-    @media (max-width: 480px) {
-      .container {
-        padding: 0 10px;
-      }
-
-      .profile-title {
-        font-size: 1.8rem;
-      }
-
-      .tagline {
-        font-size: 1rem;
-      }
-
-      .card-title {
-        font-size: 1.2rem;
-      }
-
-      .card-subtitle {
-        font-size: 0.9rem;
-      }
-
-      .skill-tag {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.8rem;
-      }
-
-    }
-
-    /* Profile Picture */
-    .profile-image {
-      width: 240px;
-      height: 240px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid white;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      margin: 0 auto 1.5rem;
-      display: block;
-    }
-
-    /* Adjust image size for medium sized screens */
-    @media screen and (max-width: 768px) {
-      .profile-image {
-        width: 180px;
-        height: 180px;
-      }
-    }
-
-    /* Adjust image size for phone screens */
-    @media screen and (max-width: 480px) {
-      .profile-image {
-        width: 140px;
-        height: 140px;
-      }
-    }
-
-    /* Subtle anchor tag styling */
-    .discrete-link {
-      color: var(--accent-color);
-      text-decoration: none;
-    }
-
-    .discrete-link:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <div class="side-nav">
-    <a href="#experience" class="nav-dot" data-section="experience"></a>
-    <a href="#current-focus" class="nav-dot" data-section="current-focus"></a>
-    <a href="#education" class="nav-dot" data-section="education"></a>
-    <a href="#skills" class="nav-dot" data-section="skills"></a>
-    <a href="#projects" class="nav-dot" data-section="projects"></a>
-  </div>
-  <main>
-    <header>
-      <div class="container header-content">
-        <img src="profile_pic.jpg" alt="Sean Óg McCartan Profile Picture" class="profile-image">
-        <h1 class="profile-title">Sean Óg McCartan</h1>
-        <div class="contact-info">
-          <a href="mailto:seanogmc@yahoo.com"><i class="fas fa-envelope"></i> seanogmc@yahoo.com</a>
-          <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"><i
-              class="fab fa-linkedin"></i> LinkedIn</a>
-          <span><i class="fas fa-map-marker-alt"></i> Belfast / Omagh</span>
+  <div class="page">
+    <nav>
+      <span class="nav-id">seanogmc.github.io</span>
+      <ul class="nav-links">
+        <li><a href="#experience">experience</a></li>
+        <li><a href="#projects">projects</a></li>
+        <li><a href="mailto:seanogmc@yahoo.com">contact</a></li>
+      </ul>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-top">
+        <div>
+          <div class="hero-label">— portfolio 2026</div>
+          <h1 class="hero-name">Sean Óg.</h1>
+          <p class="hero-sub">software engineering student · placement developer · entering final year september 2026</p>
         </div>
-        <h2 class="tagline">Software Engineering Student</h2>
-        <div class="about-me">
-          <p>
-            I'm a Software Engineering Student at Queen's University Belfast, currently on placement with
-            <a href="https://intapp.com" class="discrete-link" target="_blank">Intapp</a>.
-            I'm going to be spending the year getting hands-on with full-stack development and building real software
-            with C# and .NET
-            <br><br>
-            This website is a bit of a sandbox, a place to collect projects, share things I'm working on and keep track
-            of
-            what I've learned along the way.
-          </p>
-          <a href="CV_19_03_2025.pdf" download="CV_19_03_2025.pdf" class="download-cv">Download CV (PDF)</a>
-        </div>
+        <img src="profile_pic.jpg" alt="Sean Óg McCartan" class="hero-photo">
+      </div>
+      <p class="hero-desc">
+        Currently on placement at <a href="https://intapp.com" target="_blank" rel="noopener noreferrer">Intapp</a> in
+        Belfast,
+        building full-stack software with C# and .NET. I return to Queen's University Belfast for final year in
+        September 2026. This site is a sandbox for projects, progress, and what I'm learning as I go.
+      </p>
+      <div class="hero-meta">
+        <a href="mailto:seanogmc@yahoo.com">seanogmc@yahoo.com</a>
+        <a href="https://www.linkedin.com/in/sean-%C3%B3g-mccartan-069411276/" target="_blank"
+          rel="noopener noreferrer">LinkedIn</a>
+        <a href="CV_19_03_2025.pdf" download>Download CV</a>
       </div>
     </header>
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Work Experience</h2>
-        <div class="card">
-          <h3 class="card-title">Software Engineering Placement</h3>
-          <p class="card-subtitle">Intapp Inc. — Belfast, Co. Antrim</p>
-          <p class="card-period">August 2025 - Present</p>
-          <p>Currently 2 months into my placement year, developing across both frontend and backend.</p>
-          <ul>
-            <li>Working daily with <b>C# .NET, React, JavaScript and SQL</b>, with some exposure to <b>Azure</b>
-              services.</li>
-            <li>Maintaining internal management services through regular pull requests and feature updates.</li>
-            <li>Gaining experience with authentication, API integrations and database management.</li>
-            <li>Beginning to branch into the main product codebase, building familiarity with core service layers and
-              system architecture.</li>
-            <li>Will continue to update this section as the year progresses.</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3 class="card-title">Domestic Assistant</h3>
-          <p class="card-subtitle">Omagh Hospital and Primary Care Complex — Omagh, Co. Tyrone</p>
-          <p class="card-period">August 2022 - August 2025</p>
-          <p>Maintained a 95% Domestic Audit Score in a high-pressure healthcare setting.</p>
-          <ul>
-            <li>Ensured hospital facilities met stringent cleanliness and sanitary standards</li>
-            <li>Performed weekly COVID-19 and high-risk infection control procedures</li>
-            <li>Managed hazardous chemicals with precision and safety</li>
-            <li>Maintained a professional and approachable demeanor with staff and patients</li>
-            <li>Upheld strict patient confidentiality and prioritized their wellbeing</li>
-          </ul>
-        </div>
+
+    <section class="section" id="experience">
+      <div class="section-head">
+        <span class="section-index">01</span>
+        <h2 class="section-title">Experience</h2>
       </div>
+
+      <article class="entry">
+        <div>
+          <p class="entry-date">Aug 2025<br>Present</p>
+          <span class="entry-now">current</span>
+        </div>
+        <div>
+          <h3 class="entry-title">Software Engineering Placement</h3>
+          <p class="entry-org">Intapp Inc. — Belfast, Co. Antrim</p>
+          <p class="entry-note">Now well into my placement year, developing across both frontend and backend in a
+            production environment.
+          </p>
+          <ul class="bullets">
+            <li>Working daily with <span class="bold">C# .NET, React, JavaScript and SQL</span>, with some exposure to
+              <span class="bold">Azure</span> services.
+            </li>
+            <li>Shipping internal features and fixes through regular pull requests and collaborative code reviews.</li>
+            <li>Building hands-on experience with authentication, API integrations, and SQL-backed data workflows.</li>
+            <li>Contributing to core product services and strengthening my understanding of enterprise architecture.</li>
+            <li>Carrying these habits and standards into final year and graduate-level work.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div>
+          <p class="entry-date">Aug 2022<br>Aug 2025</p>
+        </div>
+        <div>
+          <h3 class="entry-title">Domestic Assistant</h3>
+          <p class="entry-org">Omagh Hospital and Primary Care Complex — Omagh, Co. Tyrone</p>
+          <p class="entry-note">Maintained a 95% Domestic Audit Score in a high-pressure healthcare setting.</p>
+          <ul class="bullets">
+            <li>Ensured hospital facilities met stringent cleanliness and sanitary standards.</li>
+            <li>Performed weekly COVID-19 and high-risk infection control procedures.</li>
+            <li>Managed hazardous chemicals with precision and safety.</li>
+            <li>Maintained a professional and approachable demeanor with staff and patients.</li>
+            <li>Upheld strict patient confidentiality and prioritized their wellbeing.</li>
+          </ul>
+        </div>
+      </article>
     </section>
 
-    <section id="current-focus">
-      <div class="container">
+    <section class="section" id="focus">
+      <div class="section-head">
+        <span class="section-index">02</span>
         <h2 class="section-title">Current Focus</h2>
-        <div class="card">
-          <h3 class="card-title">From Student to Developer</h3>
-          <p>This year, I am focused on levelling up from academic experience to real-world software engineering. Key
-            areas I am focused on:</p>
-          <ul>
-            <li>Adapting to the pace and standards of enterprise development</li>
-            <li>Building production-level software</li>
-            <li>Refining my habits - consistency, accountability, and clarity</li>
-            <li>Getting comforable developing on Linux (read below).</li>
+      </div>
+
+      <div class="focus-grid">
+        <div class="focus-block">
+          <p class="focus-label">from student to developer</p>
+          <ul class="bullets">
+            <li>Turning placement experience into stronger engineering fundamentals.</li>
+            <li>Building software that is reliable, maintainable, and user-focused.</li>
+            <li>Sharpening communication, ownership, and delivery consistency.</li>
+            <li>Preparing for final year projects and graduate opportunities.</li>
           </ul>
         </div>
-        <h2 class="section-title">Linux Journey</h2>
-        <div class="card">
-          <h3 class="card-title">Windows to Linux</h3>
-          <p>As of the 3rd of October I am daily driving linux.</p>
-          <ul>
-            <li>Currently running <a href="https://omarchy.org/" class="discrete-link" target="_blank">Omarchy</a> on my
-              personal laptop.</li>
-            <li>In the process of learning Bash, Vim and the other Linux-esque tools.</li>
-            <li>Will update this section with my toughts as time goes on.</li>
+        <div class="focus-block">
+          <p class="focus-label">linux journey</p>
+          <ul class="bullets">
+            <li>Daily driving Linux since October 2024.</li>
+            <li>Running <a href="https://omarchy.org/" target="_blank" rel="noopener noreferrer">Omarchy</a> on
+              my personal laptop.</li>
+            <li>Improving with Bash, Vim, and terminal-first workflows.</li>
+            <li>Continuing to refine and document my setup as I go.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section id="education">
-      <div class="container">
+    <section class="section" id="education">
+      <div class="section-head">
+        <span class="section-index">03</span>
         <h2 class="section-title">Education</h2>
-        <div class="card">
-          <h3 class="card-title">BEng Software Engineering</h3>
-          <p class="card-subtitle">Queen's University — Belfast, Co. Antrim</p>
-          <p class="card-period">September 2023 - Present</p>
-          <p>Currently on Placement Year</p>
-        </div>
-        <div class="card">
-          <h3 class="card-title">A-Levels</h3>
-          <p class="card-subtitle">Christian Brother's Grammar School — Omagh, Co. Tyrone</p>
-          <p class="card-period">September 2016 – June 2023</p>
-          <p>Physics, Technology & Design, Software Systems Development</p>
-        </div>
+      </div>
 
-        <h2 class="section-title">Academic Performance</h2>
-        <div class="grades-grid">
-          <div class="card">
-            <h3 class="card-title">Second Year (May 2025)</h3>
-            <ul>
-              <li>Data Structures and Algorithms - 78%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 78%"></div>
-                </div>
-              </li>
-              <li>Professional Skills - 73%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 73%"></div>
-                </div>
-              </li>
-              <li>Software Engineering - 63%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 63%"></div>
-                </div>
-              </li>
-              <li>Systems Security - 72%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 72%"></div>
-                </div>
-              </li>
-              <li>Service Programming - 60%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 60%"></div>
-                </div>
-              </li>
-            </ul>
+      <div class="edu-row">
+        <p class="edu-date">Sep 2023<br>Present</p>
+        <div>
+          <h3 class="edu-degree">BEng Software Engineering</h3>
+          <p class="edu-institution">Queen's University Belfast — Belfast, Co. Antrim</p>
+        </div>
+        <span class="edu-status">returning for final year · sep 2026</span>
+      </div>
+
+      <div class="edu-row">
+        <p class="edu-date">2016 — 2023</p>
+        <div>
+          <h3 class="edu-degree">A Levels</h3>
+          <p class="edu-institution">Christian Brothers Grammar School — Omagh, Co. Tyrone</p>
+        </div>
+        <span></span>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="section-head">
+        <span class="section-index">04</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+
+      <div class="skills-grid">
+        <div>
+          <p class="skill-label">languages</p>
+          <div class="skill-items">
+            <span class="skill-item">C#</span>
+            <span class="skill-item">JavaScript</span>
+            <span class="skill-item">SQL</span>
+            <span class="skill-item">Java</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">C++</span>
+            <span class="skill-item">HTML / CSS</span>
           </div>
-          <div class="card">
-            <h3 class="card-title">First Year (May 2024)</h3>
-            <ul>
-              <li>Databases - 57%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 57%"></div>
-                </div>
-              </li>
-              <li>Maths for Computing - 63%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 63%"></div>
-                </div>
-              </li>
-              <li>Programming (Java) - 58%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 58%"></div>
-                </div>
-              </li>
-              <li>Cyber Security - 69%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 69%"></div>
-                </div>
-              </li>
-              <li>Computer Architecture - 52%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 52%"></div>
-                </div>
-              </li>
-              <li>Design Principles - 46%
-                <div class="progress-container">
-                  <div class="progress-bar" style="width: 46%"></div>
-                </div>
-              </li>
-            </ul>
+        </div>
+        <div>
+          <p class="skill-label">frameworks &amp; tools</p>
+          <div class="skill-items">
+            <span class="skill-item">React</span>
+            <span class="skill-item">.NET / ASP.NET Core</span>
+            <span class="skill-item">Spring Boot</span>
+            <span class="skill-item">REST APIs</span>
+            <span class="skill-item">Git</span>
+            <span class="skill-item">Azure</span>
+            <span class="skill-item">Maven</span>
           </div>
-          <div class="card">
-            <h3 class="card-title">A-Levels & AS-Levels</h3>
-            <p class="card-subtitle">Christian Brothers Grammar School</p>
-            <ul>
-              <li>A-Levels (2023): Physics - B, Software Systems - A, Tech & Design - A</li>
-              <li>AS-Levels (2022): Physics - C, Software Systems - C, Tech & Design - B</li>
-            </ul>
+        </div>
+        <div>
+          <p class="skill-label">practices</p>
+          <div class="skill-items">
+            <span class="skill-item">Problem Solving</span>
+            <span class="skill-item">Team Collaboration</span>
+            <span class="skill-item">User-centric Design</span>
+            <span class="skill-item">Agile</span>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Professional Skills</h2>
-        <div class="skills-grid">
-          <div class="card">
-            <h3 class="card-title">Programming Languages</h3>
-            <ul>
-              <li>Java <div class="progress-container">
-                  <div class="progress-bar" style="width: 65%"></div>
-                </div>
-              </li>
-              <li>Python <div class="progress-container">
-                  <div class="progress-bar" style="width: 45%"></div>
-                </div>
-              </li>
-              <li>C# <div class="progress-container">
-                  <div class="progress-bar" style="width: 50%"></div>
-                </div>
-              </li>
-              <li>C++ <div class="progress-container">
-                  <div class="progress-bar" style="width: 65%"></div>
-                </div>
-              </li>
-              <li>SQL <div class="progress-container">
-                  <div class="progress-bar" style="width: 60%"></div>
-                </div>
-              </li>
-              <li>ASP.NET Core <div class="progress-container">
-                  <div class="progress-bar" style="width: 10%"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Web Technologies</h3>
-            <ul>
-              <li>HTML <div class="progress-container">
-                  <div class="progress-bar" style="width: 50%"></div>
-                </div>
-              </li>
-              <li>CSS <div class="progress-container">
-                  <div class="progress-bar" style="width: 30%"></div>
-                </div>
-              </li>
-              <li>JavaScript <div class="progress-container">
-                  <div class="progress-bar" style="width: 30%"></div>
-                </div>
-              </li>
-              <li>React <div class="progress-container">
-                  <div class="progress-bar" style="width: 25%"></div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Tools & Soft Skills</h3>
-            <div class="skills-list">
-              <span class="skill-tag">Photoshop</span>
-              <span class="skill-tag">Circuit Wizard</span>
-              <span class="skill-tag">Visual Studio</span>
-              <span class="skill-tag">PyCharm</span>
-              <span class="skill-tag">IntelliJ</span>
-              <span class="skill-tag">Problem-solving</span>
-              <span class="skill-tag">Team Building</span>
-              <span class="skill-tag">User-centric Design</span>
-              <span class="skill-tag">Git</span>
-              <span class="skill-tag">Spring Boot</span>
-              <span class="skill-tag">Maven</span>
-              <span class="skill-tag">REST APIs</span>
-              <span class="skill-tag">CSS Styling</span>
-              <span class="skill-tag">JavaFX</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
+    <section class="section" id="projects">
+      <div class="section-head">
+        <span class="section-index">05</span>
         <h2 class="section-title">Projects</h2>
-        <div class="skills-grid">
-          <div class="card">
-            <h3 class="card-title">Waste Management Educational Platform</h3>
-            <p class="card-subtitle">Software Engineering & Systems Development Project</p>
-            <p class="card-period">September 2024 - March 2025</p>
-            <p>Developed a real-world solution to address waste management challenges in Johannesburg, focusing on
-              education and awareness.</p>
-            <ul>
-              <li>Engineered an interactive educational experience using Java, JavaFX, and SceneBuilder that simulates
-                real-world environmental problem-solving</li>
-              <li>Designed a modern user interface with CSS styling to enhance user engagement and learning experience
-              </li>
-              <li>Implemented Git version control system for seamless team collaboration and efficient code management
-              </li>
-              <li>Created comprehensive documentation including detailed unit and acceptance testing according to
-                industry standards</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Civil Engineering Microservices System</h3>
-            <p class="card-subtitle">Service Oriented Programming Project</p>
-            <p class="card-period">September 2024 - March 2025</p>
-            <p>Led a team in developing an integrated API system with multiple microservices for a civil engineering
-              application.</p>
-            <ul>
-              <li>Architected and integrated three distinct microservices using REST APIs to create a robust and
-                scalable system</li>
-              <li>Built the entire solution using Spring Boot and Maven, implementing industry-standard dependency
-                management</li>
-              <li>Applied object-oriented programming principles to develop maintainable, extensible code structures
-              </li>
-              <li>Gained practical experience in designing and implementing service-oriented architecture for complex
-                enterprise systems</li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3 class="card-title">Life Management System</h3>
-            <p class="card-period">In planning...</p>
-            <p>Designed as a personal tool to bring structure to life outside work - built using full-stack principles
-              and best practices learned during placement at Intapp.</p>
-            <ul>
-              <li><strong>Planned Tech:</strong> C# / .NET, SQL, HTML/CSS, JavaScript, Notion API</li>
-              <li>Some parts still behind closed doors...</span></li>
-            </ul>
-          </div>
-        </div>
       </div>
+
+      <article class="project">
+        <div class="project-header">
+          <h3 class="project-name">Waste Management Educational Platform</h3>
+          <p class="project-tag">SE &amp; Systems Dev · 2024–25</p>
+        </div>
+        <p class="project-desc">Built a real-world solution to address waste management challenges in Johannesburg,
+          focused on education and awareness.</p>
+        <ul class="bullets">
+          <li>Engineered an interactive educational experience using Java, JavaFX, and SceneBuilder.</li>
+          <li>Designed a modern UI with CSS styling to enhance user engagement and learning experience.</li>
+          <li>Implemented Git for seamless team collaboration and efficient code management.</li>
+          <li>Created comprehensive documentation including unit and acceptance testing.</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="project-header">
+          <h3 class="project-name">Civil Engineering Microservices System</h3>
+          <p class="project-tag">Service Oriented Programming · 2024–25</p>
+        </div>
+        <p class="project-desc">Led a team in delivering an integrated API system with multiple microservices for a
+          civil engineering workflow.</p>
+        <ul class="bullets">
+          <li>Architected and integrated three distinct microservices using REST APIs.</li>
+          <li>Built the entire solution using Spring Boot and Maven.</li>
+          <li>Applied OOP principles to develop maintainable, extensible code structures.</li>
+          <li>Gained practical experience in service-oriented architecture for enterprise systems.</li>
+        </ul>
+      </article>
+
+      <article class="project">
+        <div class="project-header">
+          <h3 class="project-name">Life Management System</h3>
+          <p class="project-tag">Personal Project</p>
+        </div>
+        <span class="project-wip">active planning</span>
+        <p class="project-desc">A personal tool to bring structure to life outside work — shaped by the full-stack
+          principles and best practices I'm applying during placement at Intapp.</p>
+        <ul class="bullets">
+          <li><span class="bold">Planned tech:</span> C# / .NET, SQL, HTML/CSS, JavaScript, Notion API</li>
+          <li>Still private while I define scope, architecture, and first release goals.</li>
+        </ul>
+      </article>
     </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 Sean Óg McCartan. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <div class="back-to-top"><i class="fas fa-arrow-up"></i></div>
-  <div class="dark-mode-toggle"><i class="fas fa-moon"></i></div>
-
-  <script>
-    // Scroll Animation
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          const navDot = document.querySelector(`.nav-dot[data-section="${entry.target.id}"]`);
-          document.querySelectorAll('.nav-dot').forEach(dot => dot.classList.remove('active'));
-          if (navDot) navDot.classList.add('active');
-        }
-      });
-    }, {threshold: 0.3});
-
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-    // Back to Top
-    const backToTop = document.querySelector('.back-to-top');
-    window.addEventListener('scroll', () => {
-      backToTop.classList.toggle('visible', window.scrollY > 300);
-    });
-    backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
-
-    // Dark Mode Toggle
-    const toggle = document.querySelector('.dark-mode-toggle');
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      toggle.innerHTML = document.body.classList.contains('dark-mode') ?
-        '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-    });
-
-    // Smooth Scroll for Side Nav
-    document.querySelectorAll('.nav-dot').forEach(dot => {
-      dot.addEventListener('click', (e) => {
-        e.preventDefault();
-        const section = document.querySelector(dot.getAttribute('href'));
-        section.scrollIntoView({behavior: 'smooth'});
-      });
-    });
-  </script>
+    <footer>
+      <p class="footer-sig">Sean Óg McCartan</p>
+      <p class="footer-copy">© 2026 — all rights reserved</p>
+    </footer>
+  </div>
 </body>
 
 </html>
